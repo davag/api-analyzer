@@ -9,9 +9,10 @@ const UPLOAD_DIR = process.env.UPLOAD_DIR || 'uploads';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: { id: string } | Promise<{ id: string }> }
 ) {
-  const id = params.id;
+  // Make sure we await params if it's a Promise
+  const { id } = params instanceof Promise ? await params : params;
   
   try {
     // Try to read the analysis result from the filesystem

@@ -158,9 +158,9 @@ export default function AnalysisPage() {
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="text-2xl font-bold">{fileName}</h2>
-            <p className="text-gray-600 mt-1">{specVersion}</p>
-            <p className="text-gray-500 text-sm mt-1">
+            <h2 className="text-2xl font-bold text-gray-900">{fileName}</h2>
+            <p className="text-gray-900 mt-1">{specVersion}</p>
+            <p className="text-gray-700 text-sm mt-1">
               Analyzed on {new Date(result.timestamp).toLocaleString()}
             </p>
           </div>
@@ -170,10 +170,10 @@ export default function AnalysisPage() {
               {getGrade(overallScore)}
             </div>
             <div className="ml-4">
-              <div className="text-xl font-semibold">
+              <div className="text-xl font-semibold text-gray-900">
                 {formatScore(overallScore)}
               </div>
-              <div className="text-gray-500 text-sm">Overall Score</div>
+              <div className="text-gray-900 text-sm">Overall Score</div>
             </div>
           </div>
         </div>
@@ -181,9 +181,9 @@ export default function AnalysisPage() {
         <div className="mt-6 border-t pt-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <div className="text-gray-500 text-sm mb-1">Findings</div>
+              <div className="text-gray-900 text-sm mb-1">Findings</div>
               <div className="flex items-center">
-                <span className="text-xl font-semibold">{totalFindings}</span>
+                <span className="text-xl font-semibold !text-black">{totalFindings}</span>
                 <div className="ml-2 flex">
                   <span className="px-2 py-1 text-xs rounded bg-red-100 text-red-800 mr-1">
                     {findingsBySeverity.error} Errors
@@ -199,13 +199,13 @@ export default function AnalysisPage() {
             </div>
             
             <div>
-              <div className="text-gray-500 text-sm mb-1">Specification Type</div>
-              <div className="text-xl font-semibold">{specVersion}</div>
+              <div className="text-gray-900 text-sm mb-1">Specification Type</div>
+              <div className="text-xl font-semibold text-gray-900">{specVersion}</div>
             </div>
             
             <div>
-              <div className="text-gray-500 text-sm mb-1">File Size</div>
-              <div className="text-xl font-semibold">
+              <div className="text-gray-900 text-sm mb-1">File Size</div>
+              <div className="text-xl font-semibold text-gray-900">
                 {Math.round(originalSpec.content.length / 1024)} KB
               </div>
             </div>
@@ -252,7 +252,7 @@ export default function AnalysisPage() {
           {/* Overview Tab */}
           {activeTab === 'overview' && (
             <div>
-              <h3 className="text-xl font-bold mb-6">Overall Score</h3>
+              <h3 className="text-xl font-bold mb-6 text-gray-900">Overall Score</h3>
               
               <div className="flex justify-center mb-8">
                 <CircularProgress 
@@ -264,12 +264,12 @@ export default function AnalysisPage() {
                 />
               </div>
               
-              <h3 className="text-xl font-bold mb-4">Score Breakdown</h3>
+              <h3 className="text-xl font-bold mb-4 text-gray-900">Score Breakdown</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 {Object.entries(scores).map(([category, data]) => (
                   <div key={category} className="border rounded-lg p-4 flex flex-col items-center">
-                    <h4 className="font-medium capitalize mb-3">{category}</h4>
+                    <h4 className="font-medium capitalize mb-3 text-gray-900">{category}</h4>
                     
                     <CircularProgress 
                       percentage={Math.round(data.score * 100)} 
@@ -277,11 +277,11 @@ export default function AnalysisPage() {
                       strokeWidth={8}
                     />
                     
-                    <p className="text-sm text-gray-500 mt-3">
+                    <p className="text-sm text-gray-900 mt-3">
                       Weight: {Math.round(data.weight * 100)}%
                     </p>
                     
-                    <p className="text-sm mt-2">
+                    <p className="text-sm mt-2 text-gray-900">
                       <span className="font-medium">{data.findings.length}</span> findings
                     </p>
                   </div>
@@ -289,15 +289,15 @@ export default function AnalysisPage() {
               </div>
               
               <div className="mt-8">
-                <h3 className="text-xl font-bold mb-4">Recommendations</h3>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">Recommendations</h3>
                 
                 <div className="space-y-4">
                   {Object.entries(scores).filter(([, data]) => data.findings.length > 0).map(([category, data]) => (
                     <div key={`rec-${category}`} className="border rounded-lg p-4">
-                      <h4 className="font-medium capitalize mb-2">{category} Improvements</h4>
+                      <h4 className="font-medium capitalize mb-2 text-gray-900">{category} Improvements</h4>
                       <ul className="list-disc pl-5 space-y-1">
                         {data.findings.slice(0, 3).map((finding, index) => (
-                          <li key={index} className="text-gray-700">
+                          <li key={index} className="text-gray-900">
                             {finding.message}
                           </li>
                         ))}
@@ -317,11 +317,11 @@ export default function AnalysisPage() {
           {/* Findings Tab */}
           {activeTab === 'findings' && (
             <div>
-              <h3 className="text-xl font-bold mb-4">All Findings</h3>
+              <h3 className="text-xl font-bold mb-4 text-gray-900">All Findings</h3>
               
               <div className="mb-4 flex flex-wrap gap-2">
                 <button
-                  className="px-3 py-1 border rounded-full text-sm hover:bg-gray-50"
+                  className="px-3 py-1 border rounded-full text-sm text-gray-900 hover:bg-gray-50"
                   onClick={() => {/* Filter logic */}}
                 >
                   All ({totalFindings})
@@ -331,21 +331,21 @@ export default function AnalysisPage() {
                   onClick={() => {/* Filter logic */}}
                 >
                   <SeverityBadge severity="error" size="sm" showText={false} />
-                  <span className="ml-1">Errors ({findingsBySeverity.error})</span>
+                  <span className="ml-1 text-gray-900">Errors ({findingsBySeverity.error})</span>
                 </button>
                 <button
                   className="px-3 py-1 border rounded-full text-sm hover:bg-gray-50 flex items-center"
                   onClick={() => {/* Filter logic */}}
                 >
                   <SeverityBadge severity="warning" size="sm" showText={false} />
-                  <span className="ml-1">Warnings ({findingsBySeverity.warning})</span>
+                  <span className="ml-1 text-gray-900">Warnings ({findingsBySeverity.warning})</span>
                 </button>
                 <button
                   className="px-3 py-1 border rounded-full text-sm hover:bg-gray-50 flex items-center"
                   onClick={() => {/* Filter logic */}}
                 >
                   <SeverityBadge severity="info" size="sm" showText={false} />
-                  <span className="ml-1">Info ({findingsBySeverity.info})</span>
+                  <span className="ml-1 text-gray-900">Info ({findingsBySeverity.info})</span>
                 </button>
               </div>
               
@@ -354,16 +354,16 @@ export default function AnalysisPage() {
                   <div key={`findings-${category}`}>
                     {data.findings.length > 0 && (
                       <>
-                        <h4 className="font-medium capitalize mt-6 mb-3">{category}</h4>
+                        <h4 className="font-medium capitalize mt-6 mb-3 text-gray-900">{category}</h4>
                         <div className="space-y-3">
                           {data.findings.map((finding, index) => (
                             <div key={index} className="border rounded-lg p-4">
                               <div className="flex items-start">
                                 <SeverityBadge severity={finding.severity} />
                                 <div className="ml-3">
-                                  <p className="font-medium">{finding.message}</p>
-                                  <p className="text-sm text-gray-500 mt-1">
-                                    Path: {finding.path.join('.')}
+                                  <p className="font-medium text-gray-900">{finding.message}</p>
+                                  <p className="text-sm text-gray-700 mt-1">
+                                    <span className="text-gray-900">Path:</span> <span className="text-gray-900">{finding.path.join('.')}</span>
                                   </p>
                                 </div>
                               </div>
@@ -381,7 +381,7 @@ export default function AnalysisPage() {
           {/* API Spec Tab */}
           {activeTab === 'spec' && (
             <div>
-              <h3 className="text-xl font-bold mb-4">API Specification</h3>
+              <h3 className="text-xl font-bold mb-4 text-gray-900">API Specification</h3>
               
               <ApiSpecEditor
                 content={originalSpec.content}
