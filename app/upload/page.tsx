@@ -117,7 +117,7 @@ export default function UploadPage() {
         </div>
         
         <div className="bg-white rounded-lg shadow-md p-8">
-          <h2 className="text-2xl font-bold mb-6">Upload Specification File</h2>
+          <h2 className="text-2xl font-bold mb-6 text-gray-900">Upload Specification File</h2>
           
           <form onSubmit={handleSubmit}>
             <div 
@@ -134,7 +134,7 @@ export default function UploadPage() {
                 </svg>
               </div>
               
-              <p className="mb-2 text-sm text-gray-600">
+              <p className="mb-2 text-sm text-gray-900">
                 <span className="font-medium">Drag and drop</span> your file here or{' '}
                 <label className="text-blue-600 hover:text-blue-800 cursor-pointer">
                   browse
@@ -148,7 +148,7 @@ export default function UploadPage() {
                 </label>
               </p>
               
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-gray-700">
                 Supported formats: JSON, YAML/YML (OpenAPI/Swagger), JAR (with api-docs folder)
               </p>
             </div>
@@ -157,8 +157,8 @@ export default function UploadPage() {
               <div className="mb-6 p-4 bg-gray-50 rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">{file.name}</p>
-                    <p className="text-sm text-gray-500">{(file.size / 1024).toFixed(2)} KB</p>
+                    <p className="font-medium text-gray-900">{file.name}</p>
+                    <p className="text-sm text-gray-700">{(file.size / 1024).toFixed(2)} KB</p>
                   </div>
                   
                   {!isUploading && (
@@ -175,7 +175,7 @@ export default function UploadPage() {
             )}
             
             {error && (
-              <div className="mb-6 p-4 bg-red-50 text-red-600 rounded-lg">
+              <div className="mb-6 p-4 bg-red-50 text-red-600 rounded-lg font-medium">
                 {error}
               </div>
             )}
@@ -188,7 +188,7 @@ export default function UploadPage() {
                     style={{ width: `${uploadProgress}%` }}
                   ></div>
                 </div>
-                <p className="mt-2 text-sm text-gray-600 text-center">
+                <p className="mt-2 text-sm text-gray-900 text-center">
                   {uploadProgress < 100
                     ? `Uploading... ${uploadProgress}%`
                     : 'Processing file...'}
@@ -199,7 +199,7 @@ export default function UploadPage() {
             <div className="flex justify-end">
               <button
                 type="button"
-                className="mr-4 px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition duration-300"
+                className="mr-4 px-6 py-2 border border-gray-300 rounded-md text-gray-900 hover:bg-gray-50 transition duration-300"
                 onClick={() => router.push('/')}
                 disabled={isUploading}
               >

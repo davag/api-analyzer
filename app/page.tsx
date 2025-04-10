@@ -5,11 +5,11 @@ export default function Home() {
   return (
     <Layout>
       <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-8 my-8">
-        <h2 className="text-2xl font-bold mb-6">Analyze Your API Specification</h2>
+        <h2 className="text-2xl font-bold mb-6 text-gray-900">Analyze Your API Specification</h2>
         
         <div className="mb-8">
-          <p className="mb-4">Upload your API specification to get detailed quality analysis:</p>
-          <ul className="list-disc pl-6 mb-4 space-y-2">
+          <p className="mb-4 text-gray-900">Upload your API specification to get detailed quality analysis:</p>
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-gray-900">
             <li>Documentation completeness score</li>
             <li>Schema & syntax validation</li>
             <li>Best practices analysis</li>

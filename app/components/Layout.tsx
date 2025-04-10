@@ -26,14 +26,14 @@ export default function Layout({ children, title, subtitle }: LayoutProps) {
       <main className="flex-grow container mx-auto p-6">
         {title && (
           <div className="mb-6">
-            <h2 className="text-2xl font-bold">{title}</h2>
+            <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
           </div>
         )}
         {children}
       </main>
       
       <footer className="bg-gray-100 p-6 mt-auto">
-        <div className="container mx-auto text-center text-gray-600 text-sm">
+        <div className="container mx-auto text-center text-gray-700 text-sm">
           <p>© {new Date().getFullYear()} API Specification Quality Analyzer</p>
         </div>
       </footer>
