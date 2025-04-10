@@ -127,6 +127,24 @@ export async function POST(request: NextRequest) {
       extractedSpecs
     });
 
+    // Save the analysis result to a file for retrieval by the GET handler
+    try {
+      const resultData = {
+        result: analysisResult,
+        spec: parsedSpec,
+        originalSpec: apiSpec,
+        extractedSpecs
+      };
+      
+      await writeFile(
+        path.join(uploadDir, 'analysis-result.json'),
+        JSON.stringify(resultData, null, 2)
+      );
+    } catch (error) {
+      console.error('Error saving analysis result:', error);
+      // Continue even if saving fails as we still have the in-memory result
+    }
+
     return NextResponse.json({ analysisId });
   } catch (error) {
     console.error('Error processing file:', error);
